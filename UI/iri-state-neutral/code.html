@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;family=Bubblegum+Sans&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "iri-peach": "#ffcba4",
+                        "iri-lavender": "#e6e6fa",
+                        "iri-blue": "#e0f7fa",
+                        "iri-text": "#4a5568",
+                        "iri-accent": "#b39ddb",
+                        "kawaii-pink": "#ff85c0",
+                        "kawaii-hot": "#ff4d91",
+                        "kawaii-soft": "#ffdeeb",
+                        "dreamy-lavender": "#e8d5ff",
+                        "dreamy-blue": "#d1f7ff",
+                        "spoiled-purple": "#b39ddb",
+                        "spoiled-grey": "#cfd8dc"
+                    },
+                    fontFamily: {
+                        "display": ["Bubblegum Sans", "cursive"],
+                        "body": ["Quicksand", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "kawaii": "2.5rem",
+                        "bubbly": "4rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --peach-glow: 0 0 15px rgba(255, 203, 164, 0.4);
+            --inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+        body {
+            background: linear-gradient(135deg, #e6e6fa 0%, #d1f7ff 100%);
+            font-family: 'Quicksand', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .neutral-glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 2.5rem;
+        }
+        .bubbly-sidebar {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .iri-egg-neutral {
+            background: radial-gradient(circle at 30% 30%, #fff 0%, #ffcba4 50%, #e6e6fa 100%);
+            box-shadow: 0 10px 30px rgba(179, 157, 219, 0.2), inset -5px -5px 20px rgba(0,0,0,0.05);
+        }
+        .iri-eye-neutral {
+            background: #4a5568;
+            border-radius: 50%;
+        }
+        .kawaii-button {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .kawaii-button:hover {
+            transform: scale(1.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #b39ddb;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .pulse-gentle {
+            animation: pulse-gentle 4s ease-in-out infinite;
+        }
+        @keyframes pulse-gentle {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.02); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="text-iri-text">
+<div class="relative flex h-screen w-full flex-col">
+<header class="flex h-20 shrink-0 items-center justify-between px-10 bg-white/50 backdrop-blur-lg z-20 border-b border-white/60">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-iri-accent rounded-full flex items-center justify-center text-white shadow-md shrink-0">
+<span class="material-symbols-outlined text-2xl">eco</span>
+</div>
+<h1 class="font-display text-2xl text-slate-700 whitespace-nowrap">
+                        Irigotchi Experience <span class="text-iri-accent ml-2 text-lg font-body">✿ neutral state ✿</span>
+</h1>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-700 font-bold hover:text-iri-accent transition-colors text-sm whitespace-nowrap border-b-2 border-iri-accent pb-0.5" href="#">Workspace</a>
+<a class="text-slate-500 font-bold hover:text-iri-accent transition-colors text-sm whitespace-nowrap" href="#">Heart History</a>
+<a class="text-slate-500 font-bold hover:text-iri-accent transition-colors text-sm whitespace-nowrap" href="#">Petals</a>
+<a class="text-slate-500 font-bold hover:text-iri-accent transition-colors text-sm whitespace-nowrap" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 pointer-events-none">search</span>
+<input class="w-64 bg-white/70 border border-white/60 rounded-full py-2 pl-10 pr-4 focus:ring-iri-accent focus:border-iri-accent text-sm placeholder:text-slate-400 outline-none shadow-sm" placeholder="Search tasks..." type="text"/>
+</div>
+<button class="kawaii-button size-10 flex items-center justify-center rounded-full bg-white border border-white text-iri-accent shrink-0 shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-10 rounded-full border-2 border-white overflow-hidden shadow-md shrink-0">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLONbuhical0o0Qr5vkso2fKfQpCQRUPbq_I-mBBDfEnRHPouITy-sxkJmmBNye_vjGmwJpJuCplXZCkbr_VU6ZAYniGXi2yqiQ-M7bvD6Ry2uSEwp19nc9QJPVDiZzS8de5h_nKPamY_Mc0XXAgLUqaR0o7TR2Bjf0KlMr4bWE4LJx_ogwtMwgH4hmFBAvKgsaxEbe0TZSvO1vB7VtaOM8w040iJWaaGHjoQRz2k8h6v2bYYNsq95O6C6HbAtGdq22n8m6C8DyyE"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-72 bubbly-sidebar flex flex-col p-6 gap-6 z-10 overflow-y-auto custom-scrollbar">
+<div class="flex flex-col gap-6">
+<div class="neutral-glass p-4 flex items-center justify-center gap-4 shrink-0 mx-auto w-full max-w-[240px]">
+<div class="size-12 rounded-full iri-egg-neutral border-2 border-white/80 flex items-center justify-center relative overflow-hidden shrink-0">
+<div class="flex gap-2">
+<div class="w-1.5 h-1.5 bg-slate-600 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-slate-600 rounded-full"></div>
+</div>
+</div>
+<div class="min-w-0">
+<h3 class="font-display text-xl text-slate-700 truncate">Iri</h3>
+<p class="text-iri-accent text-[10px] font-bold uppercase tracking-wider">Status: Stable</p>
+</div>
+</div>
+<nav class="flex flex-col gap-3 w-full">
+<a class="flex items-center gap-4 px-6 py-3 rounded-full bg-iri-accent text-white shadow-md font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">chat_bubble</span>
+<span class="whitespace-nowrap">Focus Chat</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-500 hover:bg-white/50 transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">favorite</span>
+<span class="whitespace-nowrap">Bonding Level</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-500 hover:bg-white/50 transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">check_circle</span>
+<span class="whitespace-nowrap">Daily Quests</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-500 hover:bg-white/50 transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">spa</span>
+<span class="whitespace-nowrap">Nurture</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto pt-6">
+<div class="p-5 rounded-[2rem] bg-white/40 border border-white mb-4 text-center">
+<p class="text-sm text-slate-600 font-medium italic">"Productivity is optimal today."</p>
+</div>
+<button class="kawaii-button w-full py-4 rounded-full bg-white text-iri-accent border border-iri-accent/20 font-display text-xl shadow-sm hover:shadow-md">
+                        Quick Check-in ✨
+                    </button>
+</div>
+</aside>
+<main class="flex-1 flex overflow-hidden p-6 gap-6">
+<div class="flex-1 flex flex-col gap-6 min-w-0 h-full">
+<div class="flex-1 neutral-glass overflow-hidden flex flex-col border-white/60 h-full bg-white/40">
+<div class="flex-1 p-8 overflow-y-auto flex flex-col gap-6 custom-scrollbar">
+<div class="flex items-start gap-4 max-w-[85%] pr-4">
+<div class="size-10 rounded-full iri-egg-neutral shrink-0 border-2 border-white mt-1"></div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-slate-500 ml-2">Iri</span>
+<div class="bg-white/90 px-6 py-3.5 rounded-[2rem] rounded-tl-none text-slate-700 text-sm shadow-sm border border-slate-100 leading-relaxed break-words">
+                                        Good morning. I've analyzed your schedule. We have a clear path for deep work today. Systems are stable.
+                                    </div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5 self-end max-w-[85%] pl-4">
+<span class="text-xs font-bold text-slate-400 mr-2">You</span>
+<div class="bg-iri-accent/90 text-white px-6 py-3.5 rounded-[2rem] rounded-tr-none text-sm shadow-sm leading-relaxed break-words text-left">
+                                    Thanks Iri. Let's focus on the quarterly report first.
+                                </div>
+</div>
+<div class="flex items-start gap-4 max-w-[85%] pr-4">
+<div class="size-10 rounded-full iri-egg-neutral shrink-0 border-2 border-white opacity-90 mt-1"></div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-slate-500 ml-2">Iri</span>
+<div class="bg-white/90 px-6 py-3.5 rounded-[2rem] rounded-tl-none text-slate-700 text-sm shadow-sm border border-slate-100 leading-relaxed break-words">
+                                        Acknowledged. Opening relevant data streams. Suggesting a 45-minute focus block. Would you like some ambient noise?
+                                    </div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white/30 border-t border-white/50">
+<div class="relative flex items-center gap-3">
+<button class="size-10 flex items-center justify-center text-slate-400 hover:text-iri-accent hover:bg-white/50 rounded-full transition-colors shrink-0">
+<span class="material-symbols-outlined text-2xl">add_circle</span>
+</button>
+<input class="w-full bg-white/80 border border-white rounded-full py-3 px-6 focus:ring-iri-accent focus:border-iri-accent text-slate-700 placeholder:text-slate-400 transition-all shadow-sm outline-none" placeholder="Type your message..." type="text"/>
+<button class="bg-iri-accent text-white h-10 w-16 rounded-full font-bold shadow-md hover:bg-iri-accent/90 transition-colors flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="w-[360px] flex flex-col gap-6 shrink-0 h-full">
+<div class="neutral-glass p-8 flex flex-col items-center justify-between relative flex-1 border-white/80 bg-white/30">
+<div class="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-600 border border-emerald-200 text-[10px] font-bold uppercase tracking-widest shadow-sm z-10">
+                            Optimal State
+                        </div>
+<div class="flex-1 flex flex-col items-center justify-center w-full">
+<div class="pulse-gentle relative">
+<div class="w-48 h-60 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] iri-egg-neutral border-4 border-white flex flex-col items-center justify-center relative overflow-hidden">
+<div class="flex gap-12 mt-[-10px]">
+<div class="w-3 h-3 bg-slate-700 rounded-full"></div>
+<div class="w-3 h-3 bg-slate-700 rounded-full"></div>
+</div>
+<div class="w-6 h-3 border-b-2 border-slate-700/50 rounded-full mt-4"></div>
+<div class="absolute top-[45%] flex justify-between w-full px-10">
+<div class="w-6 h-3 bg-pink-300/20 blur-md rounded-full"></div>
+<div class="w-6 h-3 bg-pink-300/20 blur-md rounded-full"></div>
+</div>
+</div>
+<div class="w-32 h-4 bg-slate-400/10 blur-xl rounded-full mt-8 mx-auto"></div>
+</div>
+</div>
+<div class="w-full flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="neutral-glass p-4 border-white/50 bg-white/40">
+<span class="text-slate-400 text-[10px] font-bold uppercase block mb-2">Sadness Level</span>
+<div class="flex items-center justify-between gap-1">
+<span class="text-2xl font-display text-slate-700">0%</span>
+<span class="text-emerald-500 bg-emerald-50 w-8 h-8 flex items-center justify-center rounded-md shrink-0">
+<span class="material-symbols-outlined text-lg">check</span>
+</span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-emerald-400 w-[0%] rounded-full"></div>
+</div>
+</div>
+<div class="neutral-glass p-4 border-white/50 bg-white/40">
+<span class="text-slate-400 text-[10px] font-bold uppercase block mb-2">Trust Meter</span>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-display text-iri-accent">Steady</span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-iri-accent w-[85%] rounded-full shadow-[0_0_8px_#b39ddb]"></div>
+</div>
+</div>
+</div>
+<div class="w-full neutral-glass p-5 border-white/50 bg-white/40 text-center flex flex-col justify-center items-center">
+<span class="text-slate-400 text-[10px] font-bold uppercase block mb-1">Current Mood</span>
+<span class="text-2xl font-display text-slate-700 uppercase tracking-tight text-center w-full">Stable &amp; Chill</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

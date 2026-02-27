@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;family=Bubblegum+Sans&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "kawaii-pink": "#ff69b4",
+                        "kawaii-hot": "#ff1493",
+                        "kawaii-soft": "#fff0f5",
+                        "sunny-gold": "#ffd700",
+                        "sunny-light": "#fffacd",
+                        "bloom-orange": "#ffb74d",
+                        "happy-green": "#b9f6ca"
+                    },
+                    fontFamily: {
+                        "display": ["Bubblegum Sans", "cursive"],
+                        "body": ["Quicksand", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "kawaii": "2.5rem",
+                        "bubbly": "4rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --pink-glow: 0 0 20px rgba(255, 105, 180, 0.6);
+            --gold-glow: 0 0 15px rgba(255, 215, 0, 0.5);
+            --inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+            font-family: 'Quicksand', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .kawaii-glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--pink-glow), var(--inner-glow);
+            border-radius: 2.5rem;
+        }
+        .bubbly-sidebar {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border-right: 4px solid rgba(255, 255, 255, 0.6);
+        }
+        .iri-egg {
+            background: radial-gradient(circle at 30% 30%, #fff 0%, #ff69b4 30%, #ffd700 80%, #ff8c00 100%);
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.4), inset -10px -10px 30px rgba(255, 140, 0, 0.2);
+            position: relative;
+        }
+        .iri-egg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(white 15%, transparent 16%),
+                              radial-gradient(white 15%, transparent 16%); 
+            background-size: 10px 10px;
+            background-position: 0 0, 5px 5px;
+            opacity: 0.2;
+            border-radius: inherit;
+        }
+        .iri-eye-sparkle {
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .kawaii-button {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .kawaii-button:hover {
+            transform: scale(1.05) rotate(-1deg);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ff69b4;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .gold-shimmer {
+            background: linear-gradient(45deg, rgba(255,215,0,0) 40%, rgba(255,215,0,0.5) 50%, rgba(255,215,0,0) 60%);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 50%; }
+            100% { background-position: -200% 50%; }
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+<div class="relative flex h-screen w-full flex-col">
+<header class="flex h-20 shrink-0 items-center justify-between px-10 bg-white/50 backdrop-blur-lg z-20 border-b-4 border-sunny-gold/30">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-sunny-gold rounded-full flex items-center justify-center text-white shadow-lg shrink-0 border-2 border-white">
+<span class="material-symbols-outlined text-2xl">wb_sunny</span>
+</div>
+<h1 class="font-display text-2xl text-kawaii-hot whitespace-nowrap drop-shadow-sm">
+                        Irigotchi Experience <span class="text-bloom-orange ml-2 text-lg font-body">✿ blooming ✿</span>
+</h1>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-kawaii-hot font-bold hover:opacity-70 transition-opacity text-sm whitespace-nowrap border-b-2 border-kawaii-hot" href="#">Workspace</a>
+<a class="text-slate-500 font-bold hover:text-kawaii-hot transition-colors text-sm whitespace-nowrap" href="#">Heart History</a>
+<a class="text-slate-500 font-bold hover:text-kawaii-hot transition-colors text-sm whitespace-nowrap flex items-center gap-1" href="#">Petals <span class="bg-sunny-gold text-white text-[10px] px-1.5 rounded-full">+50</span></a>
+<a class="text-slate-500 font-bold hover:text-kawaii-hot transition-colors text-sm whitespace-nowrap" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-kawaii-hot/60 pointer-events-none">search</span>
+<input class="w-64 bg-white/70 border-2 border-sunny-gold/40 rounded-full py-2 pl-10 pr-4 focus:ring-sunny-gold focus:border-sunny-gold text-sm placeholder:text-slate-400 outline-none" placeholder="Search happy memories..." type="text"/>
+</div>
+<button class="kawaii-button size-10 flex items-center justify-center rounded-full bg-sunny-light border-2 border-sunny-gold text-bloom-orange shrink-0">
+<span class="material-symbols-outlined">notifications_active</span>
+</button>
+<div class="size-10 rounded-full border-2 border-sunny-gold overflow-hidden shadow-md shrink-0">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLONbuhical0o0Qr5vkso2fKfQpCQRUPbq_I-mBBDfEnRHPouITy-sxkJmmBNye_vjGmwJpJuCplXZCkbr_VU6ZAYniGXi2yqiQ-M7bvD6Ry2uSEwp19nc9QJPVDiZzS8de5h_nKPamY_Mc0XXAgLUqaR0o7TR2Bjf0KlMr4bWE4LJx_ogwtMwgH4hmFBAvKgsaxEbe0TZSvO1vB7VtaOM8w040iJWaaGHjoQRz2k8h6v2bYYNsq95O6C6HbAtGdq22n8m6C8DyyE"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-72 bubbly-sidebar flex flex-col p-6 gap-6 z-10 overflow-y-auto custom-scrollbar">
+<div class="flex flex-col gap-6">
+<div class="kawaii-glass p-4 flex items-center justify-center gap-4 shrink-0 mx-auto w-full max-w-[240px] bg-gradient-to-br from-white/80 to-sunny-light/50">
+<div class="size-12 rounded-full iri-egg border-2 border-white flex items-center justify-center relative overflow-hidden shrink-0">
+<div class="absolute w-full h-full animate-spin-slow opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxjaXJjbGUgY3g9IjQiIGN5PSI0IiByPSIxIiBmaWxsPSIjZmZmIi8+PC9zdmc+')]"></div>
+</div>
+<div class="min-w-0">
+<h3 class="font-display text-xl text-kawaii-hot truncate">Iri-chan</h3>
+<p class="text-bloom-orange text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">local_florist</span> Blooming
+                            </p>
+</div>
+</div>
+<nav class="flex flex-col gap-3 w-full">
+<a class="flex items-center gap-4 px-6 py-3 rounded-full bg-kawaii-hot text-white shadow-lg shadow-kawaii-hot/30 font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">chat_bubble</span>
+<span class="whitespace-nowrap">Chat Space</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-600 hover:bg-white/50 transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl text-kawaii-pink">favorite</span>
+<span class="whitespace-nowrap">Bonding Level</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-600 hover:bg-white/50 transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl text-sunny-gold">star</span>
+<span class="whitespace-nowrap">Daily Quests</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-600 hover:bg-white/50 transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl text-bloom-orange">cruelty_free</span>
+<span class="whitespace-nowrap">Pet Iri</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto pt-6">
+<div class="p-5 rounded-[2rem] bg-white/60 border-2 border-sunny-light mb-4 text-center">
+<p class="text-sm text-kawaii-hot font-medium italic">"I feel like sunshine today! Let's get things done! ✨"</p>
+</div>
+<button class="kawaii-button w-full py-4 rounded-full bg-sunny-gold text-white font-display text-xl shadow-xl shadow-sunny-gold/30 gold-shimmer">
+                        Give Treat 🍪
+                    </button>
+</div>
+</aside>
+<main class="flex-1 flex overflow-hidden p-6 gap-6 bg-white/20">
+<div class="flex-1 flex flex-col gap-6 min-w-0 h-full">
+<div class="flex-1 kawaii-glass overflow-hidden flex flex-col border-white/60 h-full">
+<div class="flex-1 p-8 overflow-y-auto flex flex-col gap-8 custom-scrollbar">
+<div class="flex items-start gap-4 max-w-[85%] pr-4">
+<div class="size-12 rounded-full iri-egg shrink-0 border-2 border-white mt-1"></div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-kawaii-hot ml-2">Iri-chan</span>
+<div class="bg-white/80 px-6 py-4 rounded-[2rem] rounded-tl-none text-slate-700 text-sm shadow-sm border border-kawaii-pink/10 leading-relaxed break-words">
+                                        Good morning! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ I've analyzed your schedule and it looks super manageable today. You're doing great!
+                                    </div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5 self-end max-w-[85%] pl-4">
+<span class="text-xs font-bold text-slate-500 mr-2">You</span>
+<div class="bg-kawaii-hot text-white px-6 py-4 rounded-[2rem] rounded-tr-none text-sm shadow-md leading-relaxed break-words text-left">
+                                    Thanks Iri! I'm ready to tackle that big project.
+                                </div>
+</div>
+<div class="flex items-start gap-4 max-w-[85%] pr-4">
+<div class="size-12 rounded-full iri-egg shrink-0 border-2 border-white mt-1"></div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-kawaii-hot ml-2">Iri-chan</span>
+<div class="bg-sunny-light/80 px-6 py-4 rounded-[2rem] rounded-tl-none text-slate-700 text-sm border-2 border-sunny-gold/30 leading-relaxed break-words">
+                                        Yay! That's the spirit! I've prepped your resources. Also, here's a little Petal boost for your motivation! 🌸✨
+                                    </div>
+<div class="flex gap-2 ml-2">
+<span class="bg-sunny-gold text-white text-[10px] font-bold px-2 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">local_florist</span> +15 Petals
+                                        </span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white/40 border-t-2 border-sunny-light">
+<div class="relative flex items-center gap-3">
+<button class="size-10 flex items-center justify-center text-kawaii-hot hover:bg-kawaii-soft/50 rounded-full transition-colors shrink-0">
+<span class="material-symbols-outlined text-2xl">add_circle</span>
+</button>
+<input class="w-full bg-white border-2 border-kawaii-soft rounded-full py-3 px-6 focus:ring-kawaii-hot focus:border-kawaii-hot text-slate-700 placeholder:text-slate-300 transition-all shadow-inner outline-none" placeholder="Share your joy... (｡♥‿♥｡)" type="text"/>
+<button class="bg-kawaii-hot text-white h-10 w-16 rounded-full font-bold shadow-lg hover:bg-kawaii-pink transition-colors flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg">send</span>
+</button>
+</div>
+<div class="mt-4 flex justify-between items-center px-4">
+<div class="flex gap-6">
+<span class="text-[10px] text-green-500 font-black flex items-center gap-1.5 uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">sentiment_satisfied</span> Positive Vibes
+                                    </span>
+<span class="text-[10px] text-bloom-orange font-bold flex items-center gap-1.5 uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> Iri is glowing
+                                    </span>
+</div>
+<span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Press Enter to Send</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-[360px] flex flex-col gap-6 shrink-0 h-full">
+<div class="kawaii-glass p-8 flex flex-col items-center justify-between relative flex-1 border-white/80 bg-gradient-to-b from-white/40 to-sunny-light/20">
+<div class="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-kawaii-hot text-white text-[10px] font-black uppercase tracking-widest shadow-md z-10 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">award_star</span> Top Performance
+                        </div>
+<div class="flex-1 flex flex-col items-center justify-center w-full">
+<div class="floating relative">
+<div class="w-48 h-60 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] iri-egg border-4 border-white flex flex-col items-center justify-center relative overflow-hidden">
+<div class="flex gap-12 mt-[-10px]">
+<div class="relative w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center">
+<div class="absolute w-full h-1/2 top-0 bg-transparent border-t-4 border-slate-800 rounded-t-full hidden"></div> 
+<div class="iri-eye-sparkle w-3 h-3 top-2 right-2"></div>
+<div class="iri-eye-sparkle w-1.5 h-1.5 bottom-3 left-3"></div>
+<div class="absolute -bottom-2 w-full h-2 rounded-[50%] bg-kawaii-pink/30 blur-sm"></div>
+</div>
+<div class="relative w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center">
+<div class="iri-eye-sparkle w-3 h-3 top-2 right-2"></div>
+<div class="iri-eye-sparkle w-1.5 h-1.5 bottom-3 left-3"></div>
+<div class="absolute -bottom-2 w-full h-2 rounded-[50%] bg-kawaii-pink/30 blur-sm"></div>
+</div>
+</div>
+<div class="absolute top-[45%] w-full flex justify-between px-8">
+<div class="w-8 h-4 bg-kawaii-hot/30 blur-md rounded-full"></div>
+<div class="w-8 h-4 bg-kawaii-hot/30 blur-md rounded-full"></div>
+</div>
+<div class="w-8 h-4 border-b-4 border-slate-800 rounded-full mt-2"></div>
+</div>
+<div class="w-32 h-6 bg-sunny-gold/40 blur-xl rounded-full mt-6 mx-auto"></div>
+</div>
+</div>
+<div class="w-full flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="kawaii-glass p-4 border-kawaii-pink/20 bg-white/70">
+<span class="text-slate-400 text-[10px] font-bold uppercase block mb-2">Sadness</span>
+<div class="flex items-center justify-between gap-1">
+<span class="text-2xl font-display text-green-500">0%</span>
+<span class="text-green-500 bg-green-100 w-8 h-8 flex items-center justify-center rounded-md shrink-0">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-green-400 w-[2%] rounded-full"></div>
+</div>
+</div>
+<div class="kawaii-glass p-4 border-kawaii-pink/20 bg-white/70">
+<span class="text-slate-400 text-[10px] font-bold uppercase block mb-2">Trust Meter</span>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-display text-sunny-gold">High</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-sunny-gold w-[95%] rounded-full shadow-[0_0_8px_#ffd700]"></div>
+</div>
+</div>
+</div>
+<div class="w-full kawaii-glass p-5 border-kawaii-pink/20 bg-gradient-to-r from-sunny-light/80 to-white/80 text-center flex flex-col justify-center items-center">
+<span class="text-slate-400 text-[10px] font-bold uppercase block mb-1">Current Mood</span>
+<span class="text-2xl font-display text-kawaii-hot uppercase italic leading-tight tracking-tight text-center w-full flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sunny-gold">wb_sunny</span> BLOOMING
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

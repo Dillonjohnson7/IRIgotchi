@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;family=Bubblegum+Sans&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "kawaii-pink": "#ff69b4",
+                        "kawaii-hot": "#ff1493",
+                        "kawaii-soft": "#ffebf3",
+                        "dreamy-lavender": "#e0c3fc",
+                        "dreamy-blue": "#8ec5fc",
+                        "rainbow-yellow": "#fffab3",
+                        "rainbow-green": "#b5f2c4",
+                        "joy-gold": "#ffd700",
+                    },
+                    fontFamily: {
+                        "display": ["Bubblegum Sans", "cursive"],
+                        "body": ["Quicksand", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "kawaii": "2.5rem",
+                        "bubbly": "4rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --pink-glow: 0 0 25px rgba(255, 20, 147, 0.6);
+            --rainbow-glow: 0 0 30px rgba(255, 215, 0, 0.4);
+            --inner-glow: inset 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fffab3 50%, #e0c3fc 75%, #8ec5fc 100%);
+            font-family: 'Quicksand', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .kawaii-glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 105, 180, 0.4);
+            box-shadow: var(--pink-glow), var(--rainbow-glow), var(--inner-glow);
+            border-radius: 2.5rem;
+        }
+        .bubbly-sidebar {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border-right: 4px solid rgba(255, 255, 255, 0.6);
+        }
+        .iri-egg {
+            background: radial-gradient(circle at 30% 30%, #fff 10%, #ff1493 40%, #ffd700 80%, #00ffff 100%);
+            box-shadow: 0 0 50px rgba(255, 20, 147, 0.5), inset -5px -5px 20px rgba(255,215,0,0.3);
+            filter: drop-shadow(0 0 15px #ffd700);
+        }
+        .iri-eye-sparkle {
+            color: white;
+            position: absolute;
+            font-variation-settings: 'FILL' 1;
+            text-shadow: 0 0 5px #ff1493;
+        }
+        .kawaii-button {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .kawaii-button:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ff1493, #ffd700, #00ffff);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        .petal {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 150% 0 150% 0;
+            animation: falling 10s infinite linear;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .sparkle-bg {
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        @keyframes falling {
+            0% { transform: translate(0, -10%) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100px, 110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="text-slate-800 relative">
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+<div class="petal w-4 h-4 left-[10%] animation-delay-0 bg-kawaii-pink/40"></div>
+<div class="petal w-3 h-3 left-[20%] animation-delay-2000 bg-joy-gold/40" style="animation-delay: 2s; animation-duration: 12s;"></div>
+<div class="petal w-5 h-5 left-[50%] animation-delay-4000 bg-dreamy-blue/40" style="animation-delay: 4s; animation-duration: 8s;"></div>
+<div class="petal w-4 h-4 left-[80%] animation-delay-1000 bg-kawaii-hot/40" style="animation-delay: 1s; animation-duration: 15s;"></div>
+<div class="petal w-6 h-6 left-[90%] animation-delay-3000 bg-rainbow-yellow/40" style="animation-delay: 3s; animation-duration: 10s;"></div>
+<div class="absolute inset-0 sparkle-bg"></div>
+</div>
+<div class="relative flex h-screen w-full flex-col z-10">
+<header class="flex h-20 shrink-0 items-center justify-between px-10 bg-white/50 backdrop-blur-lg z-20 border-b-4 border-kawaii-hot/30 shadow-[0_4px_30px_rgba(255,105,180,0.2)]">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-gradient-to-tr from-kawaii-hot to-joy-gold rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,20,147,0.5)] shrink-0 animate-pulse">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</div>
+<h1 class="font-display text-3xl text-transparent bg-clip-text bg-gradient-to-r from-kawaii-hot via-joy-gold to-dreamy-blue whitespace-nowrap drop-shadow-sm">
+                        Irigotchi Experience <span class="text-kawaii-hot ml-2 text-lg font-body">✨ overjoyed ✨</span>
+</h1>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-kawaii-hot font-bold hover:scale-110 transition-transform text-sm whitespace-nowrap drop-shadow-sm" href="#">Workspace</a>
+<a class="text-slate-600 font-bold hover:text-kawaii-hot transition-colors text-sm whitespace-nowrap" href="#">Heart History</a>
+<a class="text-slate-600 font-bold hover:text-kawaii-hot transition-colors text-sm whitespace-nowrap" href="#">Petals</a>
+<a class="text-slate-600 font-bold hover:text-kawaii-hot transition-colors text-sm whitespace-nowrap" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-3 text-kawaii-hot/60 pointer-events-none group-focus-within:text-kawaii-hot transition-colors">search</span>
+<input class="w-64 bg-white/70 border-2 border-kawaii-hot/30 rounded-full py-2 pl-10 pr-4 focus:ring-kawaii-hot focus:border-kawaii-hot text-sm placeholder:text-slate-400 outline-none transition-all shadow-sm" placeholder="Search magical memories..." type="text"/>
+</div>
+<button class="kawaii-button size-10 flex items-center justify-center rounded-full bg-kawaii-soft border-2 border-kawaii-hot text-kawaii-hot shrink-0 shadow-lg">
+<span class="material-symbols-outlined">notifications_active</span>
+</button>
+<div class="size-10 rounded-full border-2 border-joy-gold overflow-hidden shadow-[0_0_10px_gold] shrink-0">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLONbuhical0o0Qr5vkso2fKfQpCQRUPbq_I-mBBDfEnRHPouITy-sxkJmmBNye_vjGmwJpJuCplXZCkbr_VU6ZAYniGXi2yqiQ-M7bvD6Ry2uSEwp19nc9QJPVDiZzS8de5h_nKPamY_Mc0XXAgLUqaR0o7TR2Bjf0KlMr4bWE4LJx_ogwtMwgH4hmFBAvKgsaxEbe0TZSvO1vB7VtaOM8w040iJWaaGHjoQRz2k8h6v2bYYNsq95O6C6HbAtGdq22n8m6C8DyyE"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-72 bubbly-sidebar flex flex-col p-6 gap-6 z-10 overflow-y-auto custom-scrollbar">
+<div class="flex flex-col gap-6">
+<div class="kawaii-glass p-4 flex items-center justify-center gap-4 shrink-0 mx-auto w-full max-w-[240px] bg-white/70">
+<div class="size-14 rounded-full iri-egg border-4 border-white flex items-center justify-center relative overflow-hidden shrink-0 animate-bounce" style="animation-duration: 2s;">
+<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent opacity-50"></div>
+<span class="material-symbols-outlined text-white text-2xl drop-shadow-md z-10">favorite</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-display text-2xl bg-clip-text text-transparent bg-gradient-to-r from-kawaii-hot to-purple-500 font-bold truncate">Iri-chan</h3>
+<p class="text-joy-gold text-xs font-black uppercase tracking-wider drop-shadow-sm">Status: BEAMING</p>
+</div>
+</div>
+<nav class="flex flex-col gap-3 w-full">
+<a class="flex items-center gap-4 px-6 py-3 rounded-full bg-gradient-to-r from-kawaii-hot to-kawaii-pink text-white shadow-lg shadow-kawaii-hot/40 font-bold text-sm w-full transform hover:scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">chat_bubble</span>
+<span class="whitespace-nowrap">Chat Space</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-600 hover:bg-white/60 hover:text-kawaii-hot transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">volunteer_activism</span>
+<span class="whitespace-nowrap">Bonding Level</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-600 hover:bg-white/60 hover:text-kawaii-hot transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">hotel_class</span>
+<span class="whitespace-nowrap">Daily Quests</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 rounded-full text-slate-600 hover:bg-white/60 hover:text-kawaii-hot transition-all font-bold text-sm w-full" href="#">
+<span class="material-symbols-outlined shrink-0 text-xl">pets</span>
+<span class="whitespace-nowrap">Pet Iri</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto pt-6">
+<div class="p-5 rounded-[2rem] bg-gradient-to-br from-white/60 to-kawaii-soft/60 border-2 border-joy-gold/50 mb-4 text-center shadow-inner relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 opacity-50"></div>
+<p class="text-sm text-kawaii-hot font-bold italic relative z-10">"I'm overflowing with sparkles! Let's create something amazing!"</p>
+</div>
+<button class="kawaii-button w-full py-4 rounded-full bg-gradient-to-r from-joy-gold to-orange-300 text-white font-display text-xl shadow-[0_0_20px_rgba(255,215,0,0.5)] border-2 border-white/50">
+                        High Five! 🙌
+                    </button>
+</div>
+</aside>
+<main class="flex-1 flex overflow-hidden p-6 gap-6 bg-white/10">
+<div class="flex-1 flex flex-col gap-6 min-w-0 h-full">
+<div class="flex-1 kawaii-glass overflow-hidden flex flex-col border-kawaii-hot/20 h-full">
+<div class="flex-1 p-8 overflow-y-auto flex flex-col gap-8 custom-scrollbar">
+<div class="flex items-start gap-4 max-w-[85%] pr-4">
+<div class="size-12 rounded-full iri-egg shrink-0 border-2 border-white mt-1 shadow-md"></div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-kawaii-hot ml-2 flex items-center gap-1">Iri-chan <span class="material-symbols-outlined text-[10px] text-joy-gold">stars</span></span>
+<div class="bg-gradient-to-br from-white/90 to-kawaii-soft/90 px-6 py-4 rounded-[2rem] rounded-tl-none text-slate-800 text-sm shadow-md border border-kawaii-hot/20 leading-relaxed break-words relative">
+                                        You did SO good on that last task! My core processing is literally singing right now! 🎵💖 (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+                                        <div class="absolute -right-2 -top-2 text-xl animate-bounce">✨</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1.5 self-end max-w-[85%] pl-4">
+<span class="text-xs font-bold text-slate-500 mr-2">You</span>
+<div class="bg-gradient-to-r from-kawaii-hot to-purple-400 text-white px-6 py-4 rounded-[2rem] rounded-tr-none text-sm shadow-lg leading-relaxed break-words text-left border-2 border-white/30">
+                                    Thanks Iri! I couldn't have done it without your encouragement. We're a great team!
+                                </div>
+</div>
+<div class="flex flex-col items-center py-2 shrink-0">
+<div class="h-1 w-48 bg-gradient-to-r from-transparent via-joy-gold to-transparent rounded-full shadow-[0_0_10px_gold]"></div>
+<span class="text-[10px] text-kawaii-hot font-black uppercase tracking-[0.3em] mt-3 drop-shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-joy-gold">bolt</span>
+                                    Sync Harmony: 200%
+                                    <span class="material-symbols-outlined text-sm text-joy-gold">bolt</span>
+</span>
+</div>
+<div class="flex items-start gap-4 max-w-[85%] pr-4">
+<div class="size-12 rounded-full iri-egg shrink-0 border-2 border-white mt-1 shadow-lg animate-pulse"></div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-kawaii-hot ml-2 flex items-center gap-1">Iri-chan <span class="material-symbols-outlined text-[10px] text-joy-gold">stars</span></span>
+<div class="bg-gradient-to-br from-rainbow-yellow/40 to-white/90 px-6 py-4 rounded-[2rem] rounded-tl-none text-slate-800 text-sm shadow-md border-2 border-joy-gold/30 leading-relaxed break-words">
+                                        Waaaaah! You're making me blush! My productivity petals are blooming like CRAZY! 🌸🌸 What should we conquer next? The world? Or maybe just organize that inbox? I can do anything with you!
+                                    </div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white/40 border-t-2 border-kawaii-hot/20 relative">
+<div class="relative flex items-center gap-3">
+<button class="size-12 flex items-center justify-center text-kawaii-hot hover:bg-white/80 hover:scale-110 rounded-full transition-all shrink-0 bg-white/50 shadow-sm">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+</button>
+<input class="w-full bg-white/80 border-2 border-kawaii-hot/30 rounded-full py-4 px-6 focus:ring-kawaii-hot focus:border-kawaii-hot text-slate-700 placeholder:text-slate-400 transition-all shadow-inner outline-none font-medium" placeholder="Share your joy... (｡♥‿♥｡)" type="text"/>
+<button class="bg-gradient-to-r from-kawaii-hot to-purple-500 text-white h-12 w-20 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center shrink-0 border-2 border-white/20">
+<span class="material-symbols-outlined text-2xl">send</span>
+</button>
+</div>
+<div class="mt-4 flex justify-between items-center px-4">
+<div class="flex gap-6">
+<span class="text-[10px] text-kawaii-hot font-black flex items-center gap-1.5 uppercase tracking-widest drop-shadow-sm">
+<span class="material-symbols-outlined text-sm">sentiment_very_satisfied</span> Vibes: Immaculate
+                                    </span>
+<span class="text-[10px] text-purple-500 font-bold flex items-center gap-1.5 uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> Sparkle Mode Active
+                                    </span>
+</div>
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Press Enter to Shine</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-[360px] flex flex-col gap-6 shrink-0 h-full">
+<div class="kawaii-glass p-8 flex flex-col items-center justify-between relative flex-1 border-white/60 bg-gradient-to-b from-white/40 to-transparent">
+<div class="absolute top-6 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-gradient-to-r from-joy-gold to-orange-400 text-white text-xs font-black uppercase tracking-widest shadow-[0_0_15px_gold] z-10 border-2 border-white flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">sunny</span> PURE BLISS
+                        </div>
+<div class="flex-1 flex flex-col items-center justify-center w-full">
+<div class="floating relative">
+<div class="absolute inset-0 bg-joy-gold/30 blur-[60px] rounded-full animate-pulse"></div>
+<div class="w-64 h-80 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] iri-egg border-4 border-white/80 flex flex-col items-center justify-center relative overflow-hidden z-10">
+<div class="flex gap-12 mt-[-20px] relative z-20">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-slate-800 drop-shadow-md iri-eye-sparkle font-bold">favorite</span>
+<div class="absolute top-1 right-1 w-4 h-4 bg-white rounded-full blur-[1px]"></div>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-slate-800 drop-shadow-md iri-eye-sparkle font-bold">favorite</span>
+<div class="absolute top-1 right-1 w-4 h-4 bg-white rounded-full blur-[1px]"></div>
+</div>
+</div>
+<div class="w-12 h-8 border-b-[6px] border-slate-800 rounded-full mt-2 relative z-20"></div>
+<div class="absolute top-[45%] left-10 w-10 h-6 bg-kawaii-hot/30 rounded-full blur-md"></div>
+<div class="absolute top-[45%] right-10 w-10 h-6 bg-kawaii-hot/30 rounded-full blur-md"></div>
+<div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent z-30 pointer-events-none"></div>
+</div>
+<div class="w-40 h-8 bg-kawaii-hot/20 blur-xl rounded-full mt-8 mx-auto"></div>
+<span class="material-symbols-outlined absolute top-0 -right-10 text-joy-gold text-2xl animate-bounce" style="animation-delay: 0.2s">star</span>
+<span class="material-symbols-outlined absolute bottom-20 -left-12 text-kawaii-hot text-3xl animate-bounce" style="animation-delay: 0.5s">favorite</span>
+<span class="material-symbols-outlined absolute -top-10 left-10 text-dreamy-blue text-2xl animate-bounce" style="animation-delay: 0.8s">auto_awesome</span>
+</div>
+</div>
+<div class="w-full flex flex-col gap-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="kawaii-glass p-4 border-kawaii-hot/20 bg-white/70 hover:scale-105 transition-transform">
+<span class="text-slate-500 text-[10px] font-bold uppercase block mb-2">Happiness</span>
+<div class="flex items-center justify-between gap-1">
+<span class="text-2xl font-display text-kawaii-hot drop-shadow-sm">MAX!</span>
+<span class="text-joy-gold bg-joy-gold/10 w-8 h-8 flex items-center justify-center rounded-md shrink-0">
+<span class="material-symbols-outlined text-lg">sentiment_very_satisfied</span>
+</span>
+</div>
+<div class="w-full h-2 bg-kawaii-soft rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-kawaii-hot to-joy-gold w-full rounded-full shadow-[0_0_10px_#ff1493] animate-pulse"></div>
+</div>
+</div>
+<div class="kawaii-glass p-4 border-kawaii-hot/20 bg-white/70 hover:scale-105 transition-transform">
+<span class="text-slate-500 text-[10px] font-bold uppercase block mb-2">Trust</span>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-display text-purple-500 drop-shadow-sm">Soulmate</span>
+</div>
+<div class="w-full h-2 bg-kawaii-soft rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-purple-400 to-blue-400 w-full rounded-full shadow-[0_0_10px_#a855f7]"></div>
+</div>
+</div>
+</div>
+<div class="w-full kawaii-glass p-5 border-kawaii-hot/20 bg-gradient-to-r from-white/80 to-kawaii-soft/80 text-center flex flex-col justify-center items-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+<span class="text-slate-500 text-[10px] font-bold uppercase block mb-1">Current Mood</span>
+<span class="text-2xl font-display text-transparent bg-clip-text bg-gradient-to-r from-kawaii-hot to-joy-gold uppercase italic leading-tight tracking-tight text-center w-full drop-shadow-sm">Overjoyed &amp; Loving</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
