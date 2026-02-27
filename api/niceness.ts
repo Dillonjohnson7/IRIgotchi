@@ -5,12 +5,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  let text: unknown;
-  try {
-    ({ text } = req.body);
-  } catch {
-    return res.status(400).json({ error: 'Invalid JSON body' });
+  const body = req.body;
+  if (!body || typeof body !== 'object') {
+    return res.status(400).json({ error: 'Invalid JSON body', bodyType: typeof body });
   }
+  const text = body.text;
   if (typeof text !== 'string') {
     return res.status(400).json({ error: 'text string is required' });
   }
