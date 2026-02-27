@@ -1,24 +1,20 @@
-import OpenAI from 'openai';
-
-const client = new OpenAI({
-  apiKey: import.meta.env.VITE_GROQ_API_KEY,
-  baseURL: 'https://api.groq.com/openai/v1',
-  dangerouslyAllowBrowser: true,
-});
-
 export interface ChatMsg {
   role: 'user' | 'assistant';
   content: string;
 }
 
 export async function chat(history: ChatMsg[]): Promise<string> {
-  const res = await client.chat.completions.create({
-    model: 'llama-3.3-70b-versatile',
-    temperature: 0.7,
-    messages: [
-      { role: 'system', content: 'You are a helpful assistant. Be concise.' },
-      ...history,
-    ],
+  const res = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: history }),
   });
-  return res.choices[0]?.message?.content?.trim() ?? '';
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: 'Request failed' }));
+    throw new Error(err.error ?? 'Request failed');
+  }
+
+  const data = await res.json();
+  return data.content ?? '';
 }
